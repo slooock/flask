@@ -1,9 +1,6 @@
 import numpy as np
 
-
-
-def process():
-    facts = [
+def processPost(facts = [
         ('gabriel', 'endereço', 'av rio branco, 109', True),
         ('joão', 'endereço', 'rua alice, 10', True),
         ('joão', 'endereço', 'rua bob, 88', True),
@@ -12,9 +9,9 @@ def process():
         ('joão', 'telefone', '234-5678', False),
         ('gabriel', 'telefone', '98888-1111', True),
         ('gabriel', 'telefone', '56789-1010', True),
-    ]
-
+    ]):
     # resultado = np.array([])
+
     resultado = [[None,None,None,None]]
 
     schema = np.array([
@@ -30,16 +27,22 @@ def process():
     test = test.tolist()[0]
     listFalse = arr[test]
 
+    if len(listFalse) != 0:
     #Retirando itens false
-    listBoolTemp = arr == listFalse
-    arrAux = np.array([], dtype=bool);
-    for item in listBoolTemp:
-        if  False in item[0:3]:
-            arrAux = np.append(arrAux, True)
-        else:
-            arrAux = np.append(arrAux, False)
+        arrTemp = arr
+        for lf in listFalse:
+            listBoolTemp = arrTemp == lf
+            arrAux = np.array([], dtype=bool);
+            for item in listBoolTemp:
+                if  False in item[0:3]:
+                    arrAux = np.append(arrAux, True)
+                else:
+                    arrAux = np.append(arrAux, False)
 
-    arrSemFalse = arr[arrAux]
+            arrTemp = arrTemp[arrAux]
+        arrSemFalse = arrTemp
+    else:
+        arrSemFalse = arr
 
     #Definindo atributos e usuários unicos
     atributos = np.unique(arr[:,[1]])
@@ -67,9 +70,11 @@ def process():
             itemSchemaFiltrado = schema[itemSchemaFiltrado][0]
             cardinality = itemSchemaFiltrado[2]
             if cardinality == 'one':
-                resultado = np.concatenate((resultado, [itemNomeFiltrado[-1]]), axis = 0)
+                if len(itemNomeFiltrado) != 0:
+                    resultado = np.concatenate((resultado, [itemNomeFiltrado[-1]]), axis = 0)
             elif cardinality == 'many':
-                resultado = np.concatenate((resultado, itemNomeFiltrado), axis=0)
+                if len(itemNomeFiltrado) != 0:
+                    resultado = np.concatenate((resultado, itemNomeFiltrado), axis=0)
 
     resultado = resultado[1:len(resultado)]
 
