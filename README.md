@@ -1,7 +1,7 @@
 <h1 align="center">
     <img alt="Agility" src="images/cartola-fc-logo.png" height="100px" />
     <br>Challenge CartolaFC<br/>
-    Python | Numpy | JSON |Docker
+    Python | Numpy | Flask
 </h1>
 
 <p align="center">
@@ -12,7 +12,7 @@
 
 ## Sobre
 
-Desenvolvido usando Python3 e a biblioteca [NumPy](https://numpy.org/), biblioteca de código aberto destinada a realizar operações em arrays multidimensionais.
+Desenvolvido usando Python, [Flask](https://flask.palletsprojects.com/en/2.0.x/) e a biblioteca [NumPy](https://numpy.org/), biblioteca de código aberto destinada a realizar operações em arrays multidimensionais.
 
 ## Como executar a aplicação?
 

@@ -17,3 +17,7 @@ def postProcess():
 
     resposta = process.processFacts(data)
     return jsonify(resposta)
+
+@app.route('/')
+def hello_world():
+    return 'Hey, we have Flask'
