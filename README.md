@@ -12,17 +12,58 @@
 
 ## Sobre
 
+Neste projeto foi desenvolvida uma API simples para retornar os fatos vigentes. Esta API está hospedada em [https://flaskapicartola.herokuapp.com](https://flaskapicartola.herokuapp.com).
+
 Desenvolvido usando Python, [Flask](https://flask.palletsprojects.com/en/2.0.x/) e a biblioteca [NumPy](https://numpy.org/), biblioteca de código aberto destinada a realizar operações em arrays multidimensionais.
 
 ## Como executar a aplicação?
 
-git clone https://github.com/slooock/process.git
+git clone https://github.com/slooock/flask.git
 
-cd process
+cd flask
 
-docker build -t process .
+docker build -t apiflask .
 
-docker run -v $(pwd)/src:/src process
+docker run -p 5000:5000 -v $(pwd):/src apiflask
+
+Feito isso o projeto estará rodando na porta 5000.
+
+## Endpoints
+
+Para realizar o processo de filtro dos fatos vigentes foi desenvolvido dois endpoints;
+
+### process/default -> GET
+
+Retorna os fatos vigentes dos fatos fornecido na documentação.
+facts = [
+('gabriel', 'endereço', 'av rio branco, 109', True),
+('joão', 'endereço', 'rua alice, 10', True),
+('joão', 'endereço', 'rua bob, 88', True),
+ ('joão', 'telefone', '234-5678', True),
+ ('joão', 'telefone', '91234-5555', True),
+ ('joão', 'telefone', '234-5678', False),
+ ('gabriel', 'telefone', '98888-1111', True),
+ ('gabriel', 'telefone', '56789-1010', True),
+]
+
+### process/default -> POST
+
+Recebe um json dos fatos e retorna os fatos vigentes.
+
+Exemplo:
+
+{
+"facts":[
+["gabriel", "endereço", "av rio branco, 109", "True"],
+["joão", "endereço", "rua alice, 10", "True"],
+["joão", "endereço", "rua bob, 88", "True"],
+["joão", "telefone", "234-5678", "True"],
+["joão", "telefone", "91234-5555", "True"],
+["joão", "telefone", "234-5678", "False"],
+["gabriel", "telefone", "98888-1111", "True"],
+["gabriel", "telefone", "56789-1010", "True"]
+]
+}
 
 ### OBS
 
