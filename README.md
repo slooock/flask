@@ -49,7 +49,13 @@ Retorna os fatos vigentes dos fatos fornecido na documentação.
         ]
 ```
 
-### process/default -> POST
+Exemplo de execução utilizando a API hospedada em [https://flaskapicartola.herokuapp.com](https://flaskapicartola.herokuapp.com)
+
+```
+curl --location --request GET 'https://flaskapicartola.herokuapp.com/process/default'
+```
+
+### process -> POST
 
 Recebe um JSON dos fatos e retorna os fatos vigentes.
 
@@ -68,6 +74,25 @@ Exemplo:
             ["gabriel", "telefone", "56789-1010", "True"]
         ]
     }
+```
+
+Exemplo de execução utilizando a API hospedada em [https://flaskapicartola.herokuapp.com](https://flaskapicartola.herokuapp.com)
+
+```
+    curl --location --request POST 'https://flaskapicartola.herokuapp.com/process' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "facts":[
+            ["gabriel", "endereço", "av rio branco, 109", "True"],
+            ["joão", "endereço", "rua alice, 10", "True"],
+            ["joão", "endereço", "rua bob, 88", "True"],
+            ["joão", "telefone", "234-5678", "True"],
+            ["joão", "telefone", "91234-5555", "True"],
+            ["joão", "telefone", "234-5678", "False"],
+            ["gabriel", "telefone", "98888-1111", "True"],
+            ["gabriel", "telefone", "56789-1010", "True"]
+        ]
+    }'
 ```
 
 ### OBS
