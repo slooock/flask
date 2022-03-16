@@ -7,7 +7,7 @@ from flask import jsonify
 
 @app.route("/process/default", methods=['GET'])
 def getProcess():
-    resposta = process.processPost()
+    resposta = process.processFacts()
 
     return jsonify(resposta)
 
@@ -15,5 +15,5 @@ def getProcess():
 def postProcess():
     data = request.get_json()["facts"]
 
-    resposta = process.processPost(data)
+    resposta = process.processFacts(data)
     return jsonify(resposta)
