@@ -109,4 +109,4 @@ O usuário deverá ter o [Docker](https://www.docker.com/) instalado na máquina
 
 ### Entendendo a execução
 
-Ao fazer a requisição a aplicação recebe os dados fornecidos e retorna os fatos vigentes seguindo a regra proposta. A maneira como isso acontece foi descrita em [https://github.com/slooock/process/blob/main/README.md](https://github.com/slooock/process/blob/main/README.md)
+Ao fazer a requisição a aplicação recebe os dados fornecidos e retorna os fatos vigentes seguindo a regra proposta. A maneira como isso acontece foi descrita em [https://github.com/slooock/process/blob/main/README.md](https://github.com/slooock/process/blob/main/README.md).
